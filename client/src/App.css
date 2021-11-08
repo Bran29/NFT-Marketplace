@@ -3,3 +3,11 @@
   padding: 0;
   margin: 0;
 }
+
+.fDbqGL {
+  width: 100%;
+  flex-wrap:NOWRAP;
+  display: flex;
+  -webkit-box-pack: center;
+
+}

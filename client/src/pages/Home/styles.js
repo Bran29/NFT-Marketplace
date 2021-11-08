@@ -1,8 +1,21 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+  link: {
+    "&&&:before": {
+      borderBottom: "none"
+    },
+    "&&:after": {
+      borderBottom: "none"
+    }
+  },
   homepage: {
-
+      margin: "0",
+      padding: "0",
+      height: "100%",
+      fontFamily: "sans-serif",
+     
+      margin: "0 auto",
   },
   images: {
     objectFit: "cover",
@@ -10,14 +23,49 @@ const useStyles = makeStyles({
     height: "100%",
     
   },
+  skdjkr:{
+    '& img':{
+        objectFit: "cover",
+        height: "calc(50vw - 50px)",
+        width: "calc(50vw - 50px)",
+        filter: "drop-shadow(rgba(0, 0, 0, 0.2) 0px 4px 30px)",
+        willChange: "filter",
+    }
+
+  },
   banner: {
     // minHeight: "50vh",
     // maxHeight: "50vh",
     // marginBottom: "3rem"
+
+  },
+  link:
+  {
+    underline:'none',
   },
   gridBanner: {
     // margin: 0,
     // width: '100%',
+  },
+  topblock:{
+    backgroundColor: "white",
+    display: "flex",
+    height: "auto",
+    justifyContent: "center",
+    flexWrap: "nowrap",
+    fontFamily: "sans-serif"
+  },
+  topblocks:{
+    marginLeft: "0px",
+    width: "48%",
+    maxWidth: "650px",
+    display:"flex",
+    '& section':{
+        paddingLeft: "13.4rem",
+        paddingRight: "11rem",
+        padding: "0px 11em 0px 11%",
+        marginLbottom: "4.9rem"
+    }
   },
   main: {
     backgroundColor: "white",

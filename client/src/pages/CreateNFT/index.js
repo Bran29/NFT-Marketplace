@@ -11,12 +11,18 @@ import { useStyles } from "./styles.js";
 import DropZone from "../../components/DropZone";
 
 import { api } from "../../services/api";
+import axios from "axios";
+
+const API_URL = "http://localhost:3333/"
+// ||"http://10.20.6.199:8080/";
 
 const CreateNFT = () => {
   const classes = useStyles();
   const history = useHistory();
 
   const account = useSelector((state) => state.allNft.account);
+  const { user } = useSelector((state) => state.auth);
+  
   const artTokenContract = useSelector(
     (state) => state.allNft.artTokenContract
   );
@@ -38,15 +44,17 @@ const CreateNFT = () => {
 
   async function createNFT(event) {
     event.preventDefault();
-    const { title, description } = formData;
+    const { title, description,price } = formData;
 
     console.log("title: " + title);
 
     const data = new FormData();
     data.append("name", title);
     data.append("description", description);
+    // data.append("price", price);
 
     if(selectedFile){
+      // data.append('file', selectedFile);
       data.append('img', selectedFile);
       console.log("slectedFile: ", selectedFile);
     }
@@ -60,6 +68,12 @@ const CreateNFT = () => {
           "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
         },
       });
+
+      // const response = await axios.post(API_URL+"tokens", data, {
+      //   headers: {
+      //     "Authorization": "Bearer "+user.accessToken,
+      //   },
+      // });
       console.log(response);
 
       mint(response.data.message);
@@ -73,7 +87,7 @@ const CreateNFT = () => {
     try {
       const receipt = await artTokenContract.methods
         .mint(tokenMetadataURL)
-        .send({ from: account });
+        .send({from: account,gas:3000000 });
       console.log(receipt);
       console.log(receipt.events.Transfer.returnValues.tokenId);
       // setItems(items => [...items, {

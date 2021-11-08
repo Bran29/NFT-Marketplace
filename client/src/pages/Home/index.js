@@ -30,7 +30,8 @@ import stones from "../../assets/arts/rentao_-22-10-.jpg";
 import wale from "../../assets/arts/luzhan-liu-1-1500.jpg";
 import comic from "../../assets/arts/daniel-taylor-black-and-white-2019-2.jpg";
 import galerie from "../../assets/galerie.svg";
-
+import tanglang from "../../assets/tanglang.PNG";
+import Header from "../../components/Header/index";
 
 const Home = () => {
   const classes = useStyles();
@@ -119,6 +120,7 @@ const Home = () => {
           dispatch(setTokenContract(artTokenContract));
           dispatch(setMarketContract(marketplaceContract));
           dispatch(setNft(itemsList));
+
         } catch (error) {
           console.error("Error", error);
           alert(
@@ -142,52 +144,89 @@ const Home = () => {
   const nftItem = useSelector((state) => state.allNft.nft);
 
   return (
-    <div className={classes.homepage}>
-      <section className={classes.banner}>
-        <Grid container spacing={0} xs={12} className={classes.gridBanner}>
-          <Grid item xs={3}>
-            <Grid container spacing={0}>
-              <Grid item xs={8}>
-                <img src={dreaming} alt="dreaming" className={classes.images} />
+    <div class="container h-50">
+      <Header/>
+      {/* <Header />
+      <div class={classes.topblock}>
+      <div className={classes.topblocks}>
+      <section >
+        <h1 >
+          Collect digital&nbsp;art</h1>
+          <p >
+            Buy and sell NFTs from the world’s top artists</p>
+            <a  href="/login">Start Collecting</a>
+        </section>
+      </div>
+
+
+        <section>
+          <div>
+          <div>
+          <h3 >FEATURED ART</h3>
+          </div>
+          <div className={classes.skdjkr}>
+          <img src="https://pixura.imgix.net/https%3A%2F%2Fipfs.pixura.io%2Fipfs%2FQmUEvUHU48trgLJcQ3Sm2WzEV8KfKHooXNspZ6gw5a1Pf7%2Fas_above_abosch_sr6000.jpg?ixlib=js-v3.1.3&amp;fit=clip&amp;w=564&amp;h=564&amp;s=b1ef4a1ac0361e32cd7aee55ec404e11" alt="As Above"/>
+          </div>
+          <div>
+          <div>
+            <div>
+            <a  href="/">Artist</a>
+            </div>
+            <div>
+            <img src="https://ipfs.pixura.io/ipfs/QmUC23wWNZCwmwoPjsDDmV8GZdRDzXHiHLFrSZ4z8dvGTn/potato345.jpg" role="presentation" class="Image-sc-cvnh9v-0 bYLNet"/>
+            </div>
+          </div>
+          <a href="/">@kevinabosch</a>
+          </div>
+          </div>
+        </section>
+      </div> */}
+        <section className={classes.banner}>
+          <Grid container spacing={0} xs={12} className={classes.gridBanner}>
+            <Grid item xs={3}>
+              <Grid container spacing={0}>
+                <Grid item xs={8}>
+                  <img src={dreaming} alt="dreaming" className={classes.images} />
+                </Grid>
+                <Grid item xs={4}>
+                  <img src={veterans} alt="veterans" className={classes.images} />
+                </Grid>
+                <Grid item xs={7}>
+                  <img src={modeling3d} alt="modeling3d" className={classes.images} />
+                </Grid>
+                <Grid item xs={5}>
+                  <img src={lionKing} alt="lionKing" className={classes.images} />
+                </Grid>
               </Grid>
-              <Grid item xs={4}>
-                <img src={veterans} alt="veterans" className={classes.images} />
-              </Grid>
-              <Grid item xs={7}>
-                <img src={modeling3d} alt="modeling3d" className={classes.images} />
-              </Grid>
-              <Grid item xs={5}>
-                <img src={lionKing} alt="lionKing" className={classes.images} />
+            </Grid>
+            <Grid item xs={6} className={classes.main}>
+              <img src={tanglang} alt="tanglang" class="mt-5"/>
+              <Typography>A decentralized NFT marketplace where you can expose your art.</Typography>
+              <Link to="/create-nft" style={{ textDecoration: 'none' }}>
+                <Button variant="contained" color="primary" underline="none" disableElevation>
+                  Mint your art
+                </Button>
+              </Link>
+            </Grid>
+            <Grid item xs={3}>
+              <Grid container spacing={0}>
+                <Grid item xs={8}>
+                  <img src={stones} alt="dreaming" className={classes.images} />
+                </Grid>
+                <Grid item xs={4}>
+                  <img src={woman} alt="veterans" className={classes.images} />
+                </Grid>
+                <Grid item xs={7}>
+                  <img src={wale} alt="modeling3d" className={classes.images} />
+                </Grid>
+                <Grid item xs={5}>
+                  <img src={comic} alt="lionKing" className={classes.images} />
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={6} className={classes.main}>
-            <img src={galerie} alt="galerie" />
-            <Typography>A decentralized NFT marketplace where you can expose your art.</Typography>
-            <Link to="/create-nft">
-              <Button variant="contained" color="primary" disableElevation>
-                Mint your art
-              </Button>
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Grid container spacing={0}>
-              <Grid item xs={8}>
-                <img src={stones} alt="dreaming" className={classes.images} />
-              </Grid>
-              <Grid item xs={4}>
-                <img src={woman} alt="veterans" className={classes.images} />
-              </Grid>
-              <Grid item xs={7}>
-                <img src={wale} alt="modeling3d" className={classes.images} />
-              </Grid>
-              <Grid item xs={5}>
-                <img src={comic} alt="lionKing" className={classes.images} />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </section>
+        </section>
+
       <section className={classes.allNfts}>
         <Typography className={classes.title}>Latest artwork</Typography>
         <Grid

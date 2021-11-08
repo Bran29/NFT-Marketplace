@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Web3 from "web3";
 
 import { Card as MuiCard } from "@material-ui/core";
+
 import Chip from "@material-ui/core/Chip";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Divider from "@material-ui/core/Divider";

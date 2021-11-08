@@ -7,6 +7,13 @@ export const setNft = (nft) => {
   };
 };
 
+export const setownedNft = (nft) => {
+  return {
+    type: ActionTypes.SET_OWNED_NFT,
+    payload: nft,
+  };
+};
+
 export const selectedNft = (nft) => {
   return {
     type: ActionTypes.SELECTED_NFT,
