@@ -13,8 +13,7 @@ import DropZone from "../../components/DropZone";
 import { api } from "../../services/api";
 import axios from "axios";
 
-const API_URL = "http://localhost:3333/"
-// ||"http://10.20.6.199:8080/";
+const API_URL = "http://10.20.6.199:8080/";
 
 const CreateNFT = () => {
   const classes = useStyles();
@@ -51,29 +50,30 @@ const CreateNFT = () => {
     const data = new FormData();
     data.append("name", title);
     data.append("description", description);
-    // data.append("price", price);
+    data.append("price", price);
 
     if(selectedFile){
-      // data.append('file', selectedFile);
-      data.append('img', selectedFile);
+      data.append('file', selectedFile);
+      //data.append('img', selectedFile);
       console.log("slectedFile: ", selectedFile);
     }
-
+    
     try {
       const totalSupply = await artTokenContract.methods.totalSupply().call();
-      data.append("tokenId", Number(totalSupply) + 1);
+      //data.append("tokenId", Number(totalSupply) + 1);
 
-      const response = await api.post("/tokens", data, {
+      // const response = await api.post("/tokens", data, {
+      //   headers: {
+      //     "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+      //   },
+      // });
+      
+      const response = await axios.post(API_URL+"create", data, {
         headers: {
-          "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+          "Authorization": "Bearer "+user.accessToken,
         },
       });
 
-      // const response = await axios.post(API_URL+"tokens", data, {
-      //   headers: {
-      //     "Authorization": "Bearer "+user.accessToken,
-      //   },
-      // });
       console.log(response);
 
       mint(response.data.message);
